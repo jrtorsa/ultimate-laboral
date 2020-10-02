@@ -24,7 +24,7 @@ function App() {
         <div className="one-half column">
           <h6>{mensaje}</h6>
           {calculos.map((calculo) => (
-            <Resultados calculo={calculo} key={calculo.id} />
+            <Resultados key={calculo.id} calculo={calculo} />
           ))}
         </div>
       </div>

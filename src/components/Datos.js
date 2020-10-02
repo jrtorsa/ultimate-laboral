@@ -3,7 +3,7 @@ import { Vacations } from "../utils/vacations";
 
 const Datos = ({ iniciarCalculo }) => {
   const [data, setData] = useState({
-    salary: "",
+    salary: 0,
     firstDate: "",
     secondDate: "",
     timeFrame: "",
@@ -39,10 +39,11 @@ const Datos = ({ iniciarCalculo }) => {
     iniciarCalculo(data);
 
     setData({
-      salary: "",
+      salary: 0,
       firstDate: "",
       secondDate: "",
       timeFrame: "",
+      id: "",
     });
   };
 
@@ -53,7 +54,7 @@ const Datos = ({ iniciarCalculo }) => {
         <div>
           <label>Salario Diario</label>
           <input
-            type="text"
+            type="number"
             name="salary"
             value={salary}
             onChange={handleChange}
