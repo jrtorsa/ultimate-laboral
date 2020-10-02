@@ -24,7 +24,7 @@ const Datos = () => {
           <select>
             <option>-- Seleccione un Periodo --</option>
             {Vacations.map((time) => (
-              <option key={time.id}>{time.period}</option>
+              <option key={time.id}>{time.id}</option>
             ))}
           </select>
         </div>
