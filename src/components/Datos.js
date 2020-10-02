@@ -12,6 +12,8 @@ const Datos = () => {
     timeFrame: ''
   }) 
 
+  const [error, setError] = useState(false)
+
   const { salary, firstDate, secondDate, timeFrame } = data
 
   const handleChange = e => {
@@ -21,9 +23,28 @@ const Datos = () => {
     })
   }
 
+  const handleCalcular = e =>{
+    e.preventDefault()
+
+    // validar
+    if( salary.trim() === '' || firstDate.trim() === '' || secondDate.trim() === '' || timeFrame.trim() === ''){
+      setError(true)
+      return
+    } 
+    setError(false)
+
+    setData({
+      salary: '',
+    firstDate: '',
+    secondDate: '',
+    timeFrame: ''
+    })
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleCalcular}>
+      {error ? <p>Todos los campos son requeridos</p> : null}
         <div>
           <label>Salario Diario</label>
           <input type="text" name='salary' value={salary} onChange={handleChange} />
@@ -45,6 +66,7 @@ const Datos = () => {
             ))}
           </select>
         </div>
+        <button type='submit'>Calcular</button>
       </form>
     </div>
   );
