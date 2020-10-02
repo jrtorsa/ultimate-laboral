@@ -37,7 +37,7 @@ const Datos = () => {
           <input type="date" name='secondDate' value={secondDate} onChange={handleChange} />
         </div>
         <div>
-          <label>Anos Laborados</label>
+          <label>Años Laborados</label>
           <select onChange={handleChange} name='timeFrame' value={timeFrame}>
             <option value=''>-- Seleccione un Periodo --</option>
             {Vacations.map((time) => (
