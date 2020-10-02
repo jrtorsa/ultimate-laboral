@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Datos from "./components/Datos";
+import Resultados from "./components/Resultados";
 
 function App() {
-  return (
-    <div className='container'>
-            <h1 style={{textAlign:'center'}}>Calculadora Laboral</h1>
+  const [calculos, setCalculo] = useState([]);
 
-      <div className='row'>
-        <div className='one-half column'>
-      <Datos />
+  const iniciarCalculo = (calculo) => {
+    setCalculo({ ...calculos, calculo });
+  };
+
+  const mensaje =
+    calculos.length === 0
+      ? "Llena los Campos para Hacer un Calculo"
+      : "Los Resultados son los siguientes... ";
+  return (
+    <div className="container">
+      <h1 style={{ textAlign: "center" }}>Calculadora Laboral</h1>
+
+      <div className="row">
+        <div className="one-half column">
+          <Datos iniciarCalculo={iniciarCalculo} />
         </div>
-        <div className='one-half column'>2</div>
+        <div className="one-half column">
+          <h6>{mensaje}</h6>
+          {calculos.map((calculo) => (
+            <Resultados calculo={calculo} key={calculo.id} />
+          ))}
+        </div>
       </div>
     </div>
   );
