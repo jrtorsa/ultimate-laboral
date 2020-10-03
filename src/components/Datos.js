@@ -94,7 +94,7 @@ const Datos = ({ iniciarCalculo }) => {
           <select onChange={handleChange} name="timeFrame" value={timeFrame}>
             <option value="">-- Seleccione un Periodo --</option>
             {Vacations.map((time) => (
-              <option key={time.id} value={time.period}>
+              <option key={time.id} value={time.id}>
                 {time.id}
               </option>
             ))}
