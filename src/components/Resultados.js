@@ -1,13 +1,15 @@
 import React from "react";
 
 const Resultados = ({ nuevoCalculo }) => {
-
-  const nihtyDays = nuevoCalculo.salary * 90
+  const dailyIntegratedSalary =
+    parseInt(nuevoCalculo.salary) + parseInt(nuevoCalculo.bonos);
+  const nightyDays = nuevoCalculo.salary * 90;
 
   return (
     <div>
       <div>
-        <p>90 dias: {nihtyDays}</p>
+        <p>Salario Diario Integrado: ${dailyIntegratedSalary}</p>
+        <p>90 dias: ${nightyDays}</p>
       </div>
     </div>
   );

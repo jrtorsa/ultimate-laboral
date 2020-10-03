@@ -4,6 +4,7 @@ import { Vacations } from "../utils/vacations";
 const Datos = ({ iniciarCalculo }) => {
   const [data, setData] = useState({
     salary: 0,
+    bonos: 0,
     firstDate: "",
     secondDate: "",
     timeFrame: "",
@@ -12,7 +13,7 @@ const Datos = ({ iniciarCalculo }) => {
 
   const [error, setError] = useState(false);
 
-  const { salary, firstDate, secondDate, timeFrame } = data;
+  const { salary, bonos, firstDate, secondDate, timeFrame } = data;
 
   const handleChange = (e) => {
     setData({
@@ -26,7 +27,7 @@ const Datos = ({ iniciarCalculo }) => {
 
     // validar
     if (
-      salary.trim() === "" ||
+      salary.trim() === 0 ||
       firstDate.trim() === "" ||
       secondDate.trim() === "" ||
       timeFrame.trim() === ""
@@ -40,6 +41,7 @@ const Datos = ({ iniciarCalculo }) => {
 
     setData({
       salary: 0,
+      bonos: 0,
       firstDate: "",
       secondDate: "",
       timeFrame: "",
@@ -52,11 +54,20 @@ const Datos = ({ iniciarCalculo }) => {
       <form onSubmit={handleCalcular}>
         {error ? <p>Todos los campos son requeridos</p> : null}
         <div>
-          <label>Salario Diario</label>
+          <label>Salario</label>
           <input
             type="number"
             name="salary"
             value={salary}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Bonos</label>
+          <input
+            type="number"
+            name="bonos"
+            value={bonos}
             onChange={handleChange}
           />
         </div>
