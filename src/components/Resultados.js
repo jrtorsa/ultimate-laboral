@@ -1,6 +1,7 @@
 import React from "react";
 
 const Resultados = ({ nuevoCalculo }) => {
+
   return (
     <div>
       <div>

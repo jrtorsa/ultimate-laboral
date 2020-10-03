@@ -6,7 +6,7 @@ function App() {
   const [calculos, setCalculo] = useState([]);
 
   const iniciarCalculo = (calculo) => {
-    setCalculo({ ...calculos, calculo });
+    setCalculo([...calculos, calculo]);
   };
 
   const mensaje =
@@ -24,7 +24,7 @@ function App() {
         <div className="one-half column">
           <h6>{mensaje}</h6>
           {calculos.map((nuevoCalculo) => (
-            <Resultados key={nuevoCalculo.id} calculo={nuevoCalculo} />
+            <Resultados key={nuevoCalculo.id} nuevoCalculo={nuevoCalculo} />
           ))}
         </div>
       </div>
