@@ -6,16 +6,16 @@ import { parseISO } from 'date-fns'
 const Resultados = ({ nuevoCalculo }) => {
 
   const {firstDate, secondDate} = nuevoCalculo
-  const daysWorked = calculateTime(parseISO(firstDate), parseISO(secondDate))
-  console.log(daysWorked)
+  const daysWorked = calculateTime(parseISO(secondDate), parseISO(firstDate))
   
+  const yearsWorked = daysWorked / 365
 
   const dailyIntegratedSalary =
     parseInt(nuevoCalculo.salary) + parseInt(nuevoCalculo.bonos);
   
   const nightyDays = dailyIntegratedSalary * 90;
 
-  const twentyDays = dailyIntegratedSalary * 20 
+  const twentyDays = dailyIntegratedSalary * 20 * yearsWorked
 
   return (
     <div>
