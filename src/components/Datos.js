@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Vacations } from "../utils/vacations";
 
 const Datos = ({ iniciarCalculo }) => {
   const [data, setData] = useState({
@@ -7,13 +6,12 @@ const Datos = ({ iniciarCalculo }) => {
     bonos: 0,
     firstDate: "",
     secondDate: "",
-    timeFrame: "",
     id: new Date(),
   });
 
   const [error, setError] = useState(false);
 
-  const { salary, bonos, firstDate, secondDate, timeFrame } = data;
+  const { salary, bonos, firstDate, secondDate } = data;
 
   const handleChange = (e) => {
     setData({
@@ -29,9 +27,7 @@ const Datos = ({ iniciarCalculo }) => {
     if (
       salary.trim() === 0 ||
       firstDate.trim() === "" ||
-      secondDate.trim() === "" ||
-      timeFrame.trim() === ""
-    ) {
+      secondDate.trim() === ""     ) {
       setError(true);
       return;
     }
@@ -44,7 +40,6 @@ const Datos = ({ iniciarCalculo }) => {
       bonos: 0,
       firstDate: "",
       secondDate: "",
-      timeFrame: "",
       id: "",
     });
   };
@@ -89,17 +84,7 @@ const Datos = ({ iniciarCalculo }) => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Años Laborados</label>
-          <select onChange={handleChange} name="timeFrame" value={timeFrame}>
-            <option value="">-- Seleccione un Periodo --</option>
-            {Vacations.map((time) => (
-              <option key={time.id} value={time.id}>
-                {time.id}
-              </option>
-            ))}
-          </select>
-        </div>
+        
         <button type="submit">Calcular</button>
       </form>
     </div>
