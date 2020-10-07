@@ -1,14 +1,21 @@
 import React from "react";
+import {calculateTime} from '../utils/calculateTime'
+import { parseISO } from 'date-fns'
+
 
 const Resultados = ({ nuevoCalculo }) => {
+
+  const {firstDate, secondDate} = nuevoCalculo
+  const daysWorked = calculateTime(parseISO(firstDate), parseISO(secondDate))
+  console.log(daysWorked)
+  
+
   const dailyIntegratedSalary =
     parseInt(nuevoCalculo.salary) + parseInt(nuevoCalculo.bonos);
-  const years = parseInt(nuevoCalculo.timeFrame);
-  console.log(nuevoCalculo.timeFrame);
-
+  
   const nightyDays = dailyIntegratedSalary * 90;
 
-  const twentyDays = dailyIntegratedSalary * 20 * years;
+  const twentyDays = dailyIntegratedSalary * 20 
 
   return (
     <div>

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { parseISO } from 'date-fns'
 
 const Datos = ({ iniciarCalculo }) => {
   const [data, setData] = useState({
     salary: 0,
     bonos: 0,
-    firstDate: "",
-    secondDate: "",
+    firstDate: parseISO(new Date()),
+    secondDate: parseISO(new Date()),
     id: new Date(),
   });
 
