@@ -1,13 +1,17 @@
 import React from "react";
 import { calculateTime } from "../utils/calculateTime";
 import { calculateAntique } from "../utils/calculateAntique";
+import { calculateProportionalDays } from '../utils/calculateProportionalDays'
 import { parseISO } from "date-fns";
 
 const minWage = 123.22;
 
 const Resultados = ({ nuevoCalculo }) => {
   const { firstDate, secondDate } = nuevoCalculo;
+
   const daysWorked = calculateTime(parseISO(secondDate), parseISO(firstDate));
+  const proportional = calculateProportionalDays(daysWorked)
+  console.log(proportional)
 
   const yearsWorked = Math.round(daysWorked / 365);
 
@@ -15,13 +19,12 @@ const Resultados = ({ nuevoCalculo }) => {
     parseInt(nuevoCalculo.salary) + parseInt(nuevoCalculo.bonos);
 
   const antique = calculateAntique(minWage, dailyIntegratedSalary);
-  console.log(antique);
 
   const nightyDays = dailyIntegratedSalary * 90;
 
   const twentyDays = dailyIntegratedSalary * 20 * yearsWorked;
 
-  const twelveDays = dailyIntegratedSalary * yearsWorked * 12;
+  const twelveDays = Math.round(antique * yearsWorked * 12);
 
   return (
     <div>
