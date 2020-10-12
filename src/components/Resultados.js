@@ -11,8 +11,7 @@ const Resultados = ({ nuevoCalculo }) => {
 
   const daysWorked = calculateTime(parseISO(secondDate), parseISO(firstDate));
   const proportional = calculateProportionalDays(daysWorked)
-  console.log(proportional)
-
+  const monthsWorked = Math.round(proportional / 30)
   const yearsWorked = Math.round(daysWorked / 365);
 
   const dailyIntegratedSalary =
@@ -30,7 +29,7 @@ const Resultados = ({ nuevoCalculo }) => {
     <div>
       <div>
         <p>Salario Diario Integrado: ${dailyIntegratedSalary}</p>
-        <p>Años Trabajados: {yearsWorked}</p>
+        <p>Tiempo Trabajado: {yearsWorked} años con {monthsWorked} meses</p>
         <p>90 dias: ${nightyDays}</p>
         <p>20 dias: ${twentyDays}</p>
         <p>12 dias: ${twelveDays}</p>
