@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { isFuture } from "date-fns";
 
 const Datos = ({ iniciarCalculo }) => {
   const [data, setData] = useState({
@@ -26,7 +27,8 @@ const Datos = ({ iniciarCalculo }) => {
     if (
       salary.trim() === 0 ||
       firstDate.trim() === "" ||
-      secondDate.trim() === ""     ) {
+      secondDate.trim() === ""
+    ) {
       setError(true);
       return;
     }
@@ -82,7 +84,7 @@ const Datos = ({ iniciarCalculo }) => {
             onChange={handleChange}
           />
         </div>
-        
+
         <button type="submit">Calcular</button>
       </form>
     </div>
