@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { isFuture } from "date-fns";
+import { isFuture, parseISO } from "date-fns";
 
 const Datos = ({ iniciarCalculo }) => {
   const [data, setData] = useState({
@@ -24,11 +24,7 @@ const Datos = ({ iniciarCalculo }) => {
     e.preventDefault();
 
     // validar
-    if (
-      salary.trim() === 0 ||
-      firstDate.trim() === "" ||
-      secondDate.trim() === ""
-    ) {
+    if (salary === 0 || firstDate === new Date() || secondDate === new Date()) {
       setError(true);
       return;
     }
@@ -43,6 +39,9 @@ const Datos = ({ iniciarCalculo }) => {
       secondDate: "",
     });
   };
+
+  const futureValidationFirstDate = isFuture(parseISO(firstDate));
+  const futureValidationSecondDate = isFuture(parseISO(secondDate));
 
   return (
     <div>
@@ -66,6 +65,9 @@ const Datos = ({ iniciarCalculo }) => {
             onChange={handleChange}
           />
         </div>
+        {futureValidationFirstDate ? (
+          <p>La fecha Debe ser hacia el Pasado</p>
+        ) : null}
         <div>
           <label>Fecha de Ingreso</label>
           <input
@@ -75,6 +77,9 @@ const Datos = ({ iniciarCalculo }) => {
             onChange={handleChange}
           />
         </div>
+        {futureValidationSecondDate ? (
+          <p>La fecha Debe ser hacia el Pasado</p>
+        ) : null}
         <div>
           <label>Fecha de Egreso</label>
           <input
