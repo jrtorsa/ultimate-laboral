@@ -1,4 +1,4 @@
-export const Vacations = [
+export const vacations = [
   { id: 1, period: 6 },
   { id: 2, period: 8 },
   { id: 3, period: 10 },
